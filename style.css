@@ -2,11 +2,30 @@ body {
   color: #DDD;
 }
 
+textarea {
+  width: 100%;
+  /* solution to the stretch outside probrem */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  color: #5bc0de;
+}
+a:hover {
+  color: #6df;
+}
+
 input[readonly],
 textarea[readonly] {
   cursor: auto;
   color: #222;
-  background-color: #eee
+  background-color: #eee;
+}
+
+footer {
+  text-align: right;
 }
 
 .hero-unit {

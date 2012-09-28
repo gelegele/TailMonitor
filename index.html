@@ -13,10 +13,6 @@
 
             var fileSize;
 
-            window.onload = function() {
-                setInterval("dispatchChangeEvent()",1000);
-            };
-
             function changeHandler(e) {
                 var file = e.target.files[0];
                 readFile(file);
@@ -32,6 +28,9 @@
                 if (fileSize == file.size) {
                     //alert("Not modified");
                     return;
+                }
+                if (!fileSize) { // first time only
+                    setInterval("dispatchChangeEvent()",1000);
                 }
                 fileSize = file.size;
 
@@ -61,17 +60,17 @@
                 <header>
                     <input id="hiddenButton" type="file" style="display:none" onchange="changeHandler(event)"/>
                     <div class="input-append">
-                       <input id="photoCover" class="input-large" type="text" readonly>
+                       <input id="photoCover" class="input-large" type="text" readonly placeholder="Select a text file...">
                        <a class="btn btn-info" onclick="$id('hiddenButton').click();">Browse</a>
                     </div>
                 </header>
                 <p>
-                    <textarea id="ta" class="span12" rows=25 readonly></textarea>
+                    <textarea id="ta" rows=25 readonly></textarea>
                 </p>
             </section>
         </article>
-
         <footer>
+            Copyright © 2012 <a href="http://twitter.com/gelegele" target="_blank">@gelegele</a> All Rights Reserved.
         </footer>
     </body>
 </html>
