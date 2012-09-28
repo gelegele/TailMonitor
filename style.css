@@ -1,0 +1,19 @@
+body {
+  color: #DDD;
+}
+
+input[readonly],
+textarea[readonly] {
+  cursor: auto;
+  color: #222;
+  background-color: #eee
+}
+
+.hero-unit {
+  padding: 30px;
+  background-color: #333;
+}
+
+.hero-unit h1 {
+  font-size: 50px;
+}

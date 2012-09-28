@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tail Monitor</title>
+
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script>
+            var $id = function(id) { return document.getElementById(id); }
+
+            var fileSize;
+
+            window.onload = function() {
+                setInterval("dispatchChangeEvent()",1000);
+            };
+
+            function changeHandler(e) {
+                var file = e.target.files[0];
+                readFile(file);
+            };
+            
+            function dispatchChangeEvent() {
+                var changeEvent = document.createEvent("HTMLEvents");
+                changeEvent.initEvent("change", true, false);
+                $id("hiddenButton").dispatchEvent(changeEvent);
+            }
+
+            var readFile = function(file) {
+                if (fileSize == file.size) {
+                    //alert("Not modified");
+                    return;
+                }
+                fileSize = file.size;
+
+                $id("photoCover").value = file.name;
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $id("ta").value = e.target.result;
+                    $id("ta").scrollTop = $id("ta").scrollHeight; // Set scroll position bottom.
+                };
+                reader.readAsText(file);
+            };
+            
+        </script>
+    </head>
+
+    <body class="hero-unit">
+        <header>
+            <hgroup>
+                <h1>Tail Monitor</h1>
+                <p>Log file monitor like tail command.</p>
+            </hgroup>
+        </header>
+
+        <article>
+            <section>
+                <header>
+                    <input id="hiddenButton" type="file" style="display:none" onchange="changeHandler(event)"/>
+                    <div class="input-append">
+                       <input id="photoCover" class="input-large" type="text" readonly>
+                       <a class="btn btn-info" onclick="$id('hiddenButton').click();">Browse</a>
+                    </div>
+                </header>
+                <p>
+                    <textarea id="ta" class="span12" rows=25 readonly></textarea>
+                </p>
+            </section>
+        </article>
+
+        <footer>
+        </footer>
+    </body>
+</html>
