@@ -4,9 +4,39 @@
         <meta charset="utf-8">
         <title>Tail Monitor</title>
 
-        <link href="bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link href="style.css" rel="stylesheet">
 
+        <script src="analytics.js"></script>
+    </head>
+
+    <body class="hero-unit">
+        <header>
+          <h1 class="">Tail Monitor <small>Log file monitor like tail command.</small></h1>
+        </header>
+
+        <article>
+            <section>
+              <h3>
+                <form class="form-inline">
+                  <div class="form-group">
+                    <input id="hiddenButton" type="file" style="display:none" onchange="changeHandler(event)"/>
+                    <div class="input-group">
+                       <input id="photoCover" class="form-control" type="text" readonly placeholder="Select a text file...">
+                       <span class="input-group-btn">
+                         <a class="btn btn-info" onclick="$id('hiddenButton').click();">Browse</a>
+                       </span>
+                    </div>
+                  </div>
+                </form>
+              </h3>  
+              <textarea id="ta" rows=21 readonly></textarea>
+            </section>
+        </article>
+        <footer>
+            Copyright © 2015 <a href="http://twitter.com/gelegele" target="_blank">@gelegele</a> All Rights Reserved.
+        </footer>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script>
             var $id = function(id) { return document.getElementById(id); }
 
@@ -43,33 +73,5 @@
                 reader.readAsText(file);
             };
         </script>
-        <script src="analytics.js"></script>
-    </head>
-
-    <body class="hero-unit">
-        <header>
-            <hgroup>
-                <h1>Tail Monitor</h1>
-                <p>Log file monitor like tail command.</p>
-            </hgroup>
-        </header>
-
-        <article>
-            <section>
-                <header>
-                    <input id="hiddenButton" type="file" style="display:none" onchange="changeHandler(event)"/>
-                    <div class="input-append">
-                       <input id="photoCover" class="input-large" type="text" readonly placeholder="Select a text file...">
-                       <a class="btn btn-info" onclick="$id('hiddenButton').click();">Browse</a>
-                    </div>
-                </header>
-                <p>
-                    <textarea id="ta" rows=21 readonly></textarea>
-                </p>
-            </section>
-        </article>
-        <footer>
-            Copyright © 2012 <a href="http://twitter.com/gelegele" target="_blank">@gelegele</a> All Rights Reserved.
-        </footer>
     </body>
 </html>
