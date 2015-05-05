@@ -30,6 +30,11 @@ var readFile = function(file) {
     $id("ta").value = e.target.result;
     $id("ta").scrollTop = $id("ta").scrollHeight; // Set scroll position bottom.
   };
-  reader.readAsText(file);
+
+  var enc = 'UTF-8';
+  if (0 <= location.href.lastIndexOf('#sjis')) {
+    enc = 'Shift-JIS';
+  }
+  reader.readAsText(file, enc);
 };
 
